@@ -1801,7 +1801,7 @@ server <- function(input, output){
         gather(key= Sexo, value= superior, -dpto)
       tabla<- left_join(tabla, tablainf)
       tabla<- left_join(tabla, tablasup)
-      tabla2<- tabla %>% filter(Sexo== input$CatEdu2) 
+      tabla2<- tabla %>% filter(Sexo== input$CatEdu2)
     }
     else if (input$Nombre == "747" | input$Nombre == "746"| input$Nombre == "1808"){
       inf<- indicador_eduInf()
@@ -1809,7 +1809,7 @@ server <- function(input, output){
       colnames(inf)<- c("dpto", "inferior")
       colnames(sup)<- c("dpto", "superior")
       tabla<- left_join(indicador_edu(), inf)
-      tabla2<- left_join(tabla, sup)
+      tabla2<-left_join(tabla, sup) 
       
     }
     else if (input$Nombre == "696" | input$Nombre == "725") {
@@ -2797,5 +2797,6 @@ server <- function(input, output){
   output$dsup7 = downloadHandler('superior.csv', content = function(file) {
     write.table(indicador_hogSup(), file  ,sep=";",row.names = F)
   })
+  
   
 }
