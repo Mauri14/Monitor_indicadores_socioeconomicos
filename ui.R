@@ -147,7 +147,8 @@ contenido <- dashboardBody(
                              status= "success",
                              title = "Gráfico",
                              uiOutput("SeleccionEdu2"),
-                             plotlyOutput("ic_edu", height = 740)
+                             plotlyOutput("ic_edu", height = 740), 
+                             DTOutput("tabla_ic_edu")
                            )
                          )
                          

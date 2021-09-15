@@ -1786,6 +1786,61 @@ server <- function(input, output){
   })
   
   
+  output$tabla_ic_edu <- renderDT({
+    
+    inFile <- input$datos
+    if (is.null(inFile))
+      return('No data')
+    
+    if (input$Nombre == "741" | input$Nombre == "751" | input$Nombre == "1807"| input$Nombre == "740"| input$Nombre == "748"| input$Nombre == "690"| input$Nombre == "756"| input$Nombre == "689"| input$Nombre == "732"| input$Nombre == "739" | input$Nombre == "1020" | input$Nombre == "1380"){
+      tabla<-indicador_edu()%>%
+        gather(key= Sexo, value= Valor, -dpto)
+      tablainf<-indicador_eduInf()%>%
+        gather(key= Sexo, value= inferior, -dpto)
+      tablasup<-indicador_eduSup()%>%
+        gather(key= Sexo, value= superior, -dpto)
+      tabla<- left_join(tabla, tablainf)
+      tabla<- left_join(tabla, tablasup)
+      tabla2<- tabla %>% filter(Sexo== input$CatEdu2) 
+    }
+    else if (input$Nombre == "747" | input$Nombre == "746"| input$Nombre == "1808"){
+      inf<- indicador_eduInf()
+      sup<- indicador_eduSup()
+      colnames(inf)<- c("dpto", "inferior")
+      colnames(sup)<- c("dpto", "superior")
+      tabla<- left_join(indicador_edu(), inf)
+      tabla2<- left_join(tabla, sup)
+      
+    }
+    else if (input$Nombre == "696" | input$Nombre == "725") {
+      tabla<-indicador_edu()%>%
+        gather(key= Cat, value= Valor, -`00_dpto`)
+      colnames(tabla)[1]<- "dpto"
+      tablainf<-indicador_eduInf()%>%
+        gather(key= Cat, value= inferior, -dpto)
+      tablasup<-indicador_eduSup()%>%
+        gather(key= Cat, value= superior, -dpto)
+      tabla<- left_join(tabla, tablainf)
+      tabla<- left_join(tabla, tablasup)
+      tabla2<- tabla %>% filter(Cat== input$CatEdu2) 
+      
+    }
+    
+    
+    datatable(tabla2, 
+              options = list(info = F,
+                             paging = F,
+                             searching = T,
+                             stripeClasses = F, 
+                             lengthChange = F,
+                             scrollX = T),
+              rownames = F) %>% formatRound(c(-1), 4)
+    
+    
+  })
+  
+  
+  
   output$SeleccionEdu <- renderUI({ 
     selectInput("CatEdu", "Categoría:", choices = unique(colnames(indicador_edu())[-1])) 
   })
