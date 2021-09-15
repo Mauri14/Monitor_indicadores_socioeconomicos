@@ -1,1 +1,1 @@
-# Monitor de indicadores socioeconomicos 
+# Monitor de indicadores socioeconómicos 
