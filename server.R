@@ -1179,7 +1179,6 @@ server <- function(input, output){
     sup610<- cbind(departamentos, sup610)
     
     
-    
     colnames(sup610)[10:13]<-paste0("Total_",colnames(sup610)[10:13])
     i610Sup<-sup610
     return(i610Sup)
