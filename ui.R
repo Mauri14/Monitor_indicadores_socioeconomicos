@@ -188,7 +188,8 @@ contenido <- dashboardBody(
                              status= "success",
                              title = "Gráfico",
                              uiOutput("SeleccionSalud2"),
-                             plotlyOutput("ic_salud", height = 740)
+                             plotlyOutput("ic_salud", height = 740), 
+                             DTOutput("tabla_ic_salud")
                            )
                          )
                          
@@ -238,7 +239,8 @@ contenido <- dashboardBody(
                              status= "success",
                              title = "Gráfico",
                              uiOutput("SeleccionLab2"),
-                             plotlyOutput("ic_lab", height = 740)
+                             plotlyOutput("ic_lab", height = 740), 
+                             DTOutput("tabla_ic_lab")
                            )
                          )
                          

@@ -972,7 +972,7 @@ server <- function(input, output){
     inf610<- cbind(departamentos, inf610)
     
     
-    colnames(Ind610)[10:13]<-paste0("Total_",colnames(Ind610)[10:13])
+    colnames(inf610)[10:13]<-paste0("Total_",colnames(inf610)[10:13])
     i610Inf<-inf610
     return(i610Inf)
   })
@@ -1180,7 +1180,7 @@ server <- function(input, output){
     
     
     
-    colnames(Ind610)[10:13]<-paste0("Total_",colnames(Ind610)[10:13])
+    colnames(sup610)[10:13]<-paste0("Total_",colnames(sup610)[10:13])
     i610Sup<-sup610
     return(i610Sup)
   })
@@ -1827,7 +1827,80 @@ server <- function(input, output){
     }
     
     
-    datatable(tabla2, 
+    datatable(tabla2[,-2], 
+              options = list(info = F,
+                             paging = F,
+                             searching = T,
+                             stripeClasses = F, 
+                             lengthChange = F,
+                             scrollX = T),
+              rownames = F) %>% formatRound(c(-1), 4)
+    
+    
+  })
+  
+  
+  output$tabla_ic_salud <- renderDT({
+    
+    inFile <- input$datos
+    if (is.null(inFile))
+      return('No data')
+    
+    if (input$Nombre2 == "501"| input$Nombre2 == "529" | input$Nombre2== "517"){
+      tabla<-indicador_salud()%>%
+        gather(key= Sexo, value= Valor, -dpto)
+      tablainf<-indicador_saludInf()%>%
+        gather(key= Sexo, value= inferior, -dpto)
+      tablasup<-indicador_saludSup()%>%
+        gather(key= Sexo, value= superior, -dpto)
+      tabla<- left_join(tabla, tablainf)
+      tabla<- left_join(tabla, tablasup)
+      tabla2salud<- tabla %>% filter(Sexo== input$CatSalud2) 
+    }
+    
+    datatable(tabla2salud[,-2], 
+              options = list(info = F,
+                             paging = F,
+                             searching = T,
+                             stripeClasses = F, 
+                             lengthChange = F,
+                             scrollX = T),
+              rownames = F) %>% formatRound(c(-1), 4)
+    
+    
+  })
+  
+  output$tabla_ic_lab <- renderDT({
+    
+    inFile <- input$datos
+    if (is.null(inFile))
+      return('No data')
+    
+    if (input$Nombre3 == "533" | input$Nombre3 == "521"| input$Nombre3 == "526"| input$Nombre3 == "618"| input$Nombre3 == "608"| input$Nombre3 == "690"| input$Nombre3 == "502"| input$Nombre3 == "531" | input$Nombre3 == "607"| input$Nombre3 == "534"| input$Nombre3== "610"){
+      tabla<-indicador_lab()%>%
+        gather(key= Sexo, value= Valor, -dpto)
+      tablainf<-indicador_labInf()%>%
+        gather(key= Sexo, value= inferior, -dpto)
+      tablasup<-indicador_labSup()%>%
+        gather(key= Sexo, value= superior, -dpto)
+      tabla<- left_join(tabla, tablainf)
+      tabla<- left_join(tabla, tablasup)
+      tabla2lab<- tabla %>% filter(Sexo== input$CatLab2) 
+    }
+    else if (input$Nombre3 == "609" | input$Nombre3 == "611"){
+      tabla<-indicador_lab()%>%
+        gather(key= Cat, value= Valor, -`00_dpto`)
+      colnames(tabla)[1]<- "dpto"
+      tablainf<-indicador_labInf()%>%
+        gather(key= Cat, value= inferior, -dpto)
+      tablasup<-indicador_labSup()%>%
+        gather(key= Cat, value= superior, -dpto)
+      tabla<- left_join(tabla, tablainf)
+      tabla<- left_join(tabla, tablasup)
+      tabla2lab<- tabla %>% filter(Cat== input$CatLab2) 
+    }
+    
+    datatable(tabla2lab[,-2], 
               options = list(info = F,
                              paging = F,
                              searching = T,
