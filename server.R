@@ -1801,6 +1801,7 @@ server <- function(input, output){
       tabla<- left_join(tabla, tablainf)
       tabla<- left_join(tabla, tablasup)
       tabla2<- tabla %>% filter(Sexo== input$CatEdu2)
+      tabla2<-tabla2[,-2]
     }
     else if (input$Nombre == "747" | input$Nombre == "746"| input$Nombre == "1808"){
       inf<- indicador_eduInf()
@@ -1822,11 +1823,12 @@ server <- function(input, output){
       tabla<- left_join(tabla, tablainf)
       tabla<- left_join(tabla, tablasup)
       tabla2<- tabla %>% filter(Cat== input$CatEdu2) 
+      tabla2<-tabla2[,-2]
       
     }
     
     
-    datatable(tabla2[,-2], 
+    datatable(tabla2, 
               options = list(info = F,
                              paging = F,
                              searching = T,
@@ -1911,6 +1913,170 @@ server <- function(input, output){
     
   })
   
+  
+  output$tabla_ic_ing <- renderDT({
+    
+    inFile <- input$datos
+    if (is.null(inFile))
+      return('No data')
+    
+    if (input$Nombre4 == "526" | input$Nombre4 == "568"| input$Nombre4 == "1636"| input$Nombre4 == "531"| input$Nombre4 == "534"){
+      tabla<-indicador_ing()%>%
+        gather(key= Sexo, value= Valor, -dpto)
+      tablainf<-indicador_ingInf()%>%
+        gather(key= Sexo, value= inferior, -dpto)
+      tablasup<-indicador_ingSup()%>%
+        gather(key= Sexo, value= superior, -dpto)
+      tabla<- left_join(tabla, tablainf)
+      tabla<- left_join(tabla, tablasup)
+      tabla2ing<- tabla %>% filter(Sexo== input$CatIng2)
+      tabla2ing<- tabla2ing[,-2]
+    }
+    else if (input$Nombre4 == "577"| input$Nombre4 == "1929"| input$Nombre4 == "553"){
+      inf<- indicador_ingInf()
+      sup<- indicador_ingSup()
+      colnames(inf)<- c("dpto", "inferior")
+      colnames(sup)<- c("dpto", "superior")
+      tabla<- left_join(indicador_ing(), inf)
+      tabla2ing<- left_join(tabla, sup)
+      
+    }
+    
+    datatable(tabla2ing, 
+              options = list(info = F,
+                             paging = F,
+                             searching = T,
+                             stripeClasses = F, 
+                             lengthChange = F,
+                             scrollX = T),
+              rownames = F) %>% formatRound(c(-1), 4)
+    
+    
+  })
+  
+  output$tabla_ic_tec <- renderDT({
+    
+    inFile <- input$datos
+    if (is.null(inFile))
+      return('No data')
+    
+    if (input$Nombre5 == "605" | input$Nombre5 == "581"| input$Nombre5 == "603"){
+      tabla<-indicador_tec()%>%
+        gather(key= Sexo, value= Valor, -dpto)
+      tablainf<-indicador_tecInf()%>%
+        gather(key= Sexo, value= inferior, -dpto)
+      tablasup<-indicador_tecSup()%>%
+        gather(key= Sexo, value= superior, -dpto)
+      tabla<- left_join(tabla, tablainf)
+      tabla<- left_join(tabla, tablasup)
+      tabla2tec<- tabla %>% filter(Sexo== input$CatTec2)
+      tabla2tec<- tabla2tec[,-2]
+    }
+    else if (input$Nombre5 == "591"| input$Nombre5 == "594"| input$Nombre5 == "584"){
+      inf<- indicador_tecInf()
+      sup<- indicador_tecSup()
+      colnames(inf)<- c("dpto", "inferior")
+      colnames(sup)<- c("dpto", "superior")
+      tabla<- left_join(indicador_tec(), inf)
+      tabla2tec<- left_join(tabla, sup)
+      
+    }
+    else if (input$Nombre5 == "582"){
+      tabla<-indicador_tec()%>%
+        gather(key= Cat, value= Valor, -`00_dpto`)
+      colnames(tabla)[1]<- "dpto"
+      tablainf<-indicador_tecInf()%>%
+        gather(key= Cat, value= inferior, -dpto)
+      tablasup<-indicador_tecSup()%>%
+        gather(key= Cat, value= superior, -dpto)
+      tabla<- left_join(tabla, tablainf)
+      tabla<- left_join(tabla, tablasup)
+      tabla2tec<- tabla %>% filter(Cat== input$CatTec2)
+      tabla2tec<- tabla2tec[,-2]
+    }
+    
+    datatable(tabla2tec, 
+              options = list(info = F,
+                             paging = F,
+                             searching = T,
+                             stripeClasses = F, 
+                             lengthChange = F,
+                             scrollX = T),
+              rownames = F) %>% formatRound(c(-1), 4)
+    
+    
+  })
+  
+  output$tabla_ic_demo <- renderDT({
+    
+    inFile <- input$datos
+    if (is.null(inFile))
+      return('No data')
+    
+    if (input$Nombre6 == "678"|input$Nombre6 == "654"|input$Nombre6 == "655"){
+      tabla<-indicador_demo()%>%
+        gather(key= Cat, value= Valor, -`00_dpto`)
+      colnames(tabla)[1]<- "dpto"
+      tablainf<-indicador_demoInf()%>%
+        gather(key= Cat, value= inferior, -dpto)
+      tablasup<-indicador_demoSup()%>%
+        gather(key= Cat, value= superior, -dpto)
+      tabla<- left_join(tabla, tablainf)
+      tabla<- left_join(tabla, tablasup)
+      tabla2tec<- tabla %>% filter(Cat== input$CatDemo2) 
+    }
+    
+    datatable(tabla2tec[,-2], 
+              options = list(info = F,
+                             paging = F,
+                             searching = T,
+                             stripeClasses = F, 
+                             lengthChange = F,
+                             scrollX = T),
+              rownames = F) %>% formatRound(c(-1), 4)
+    
+    
+  })
+  
+  output$tabla_ic_hog <- renderDT({
+    
+    inFile <- input$datos
+    if (is.null(inFile))
+      return('No data')
+    
+    if (input$Nombre7 == "577"| input$Nombre7 == "553"){
+      inf<- indicador_hogInf()
+      sup<- indicador_hogSup()
+      colnames(inf)<- c("dpto", "inferior")
+      colnames(sup)<- c("dpto", "superior")
+      tabla<- left_join(indicador_hog(), inf)
+      tabla2hog<- left_join(tabla, sup)
+      
+    }
+    else if (input$Nombre7 == "764"| input$Nombre7 == "782" | input$Nombre7 == "783"| input$Nombre7 == "765"| input$Nombre7 == "766"| input$Nombre7 == "774"){
+      tabla<-indicador_hog()%>%
+        gather(key= Sexo, value= Valor, -dpto)
+      tablainf<-indicador_hogInf()%>%
+        gather(key= Sexo, value= inferior, -dpto)
+      tablasup<-indicador_hogSup()%>%
+        gather(key= Sexo, value= superior, -dpto)
+      tabla<- left_join(tabla, tablainf)
+      tabla<- left_join(tabla, tablasup)
+      tabla2hog<- tabla %>% filter(Sexo== input$CatHog2)
+      tabla2hog<-tabla2hog[,-2]
+    }
+    
+    datatable(tabla2hog, 
+              options = list(info = F,
+                             paging = F,
+                             searching = T,
+                             stripeClasses = F, 
+                             lengthChange = F,
+                             scrollX = T),
+              rownames = F) %>% formatRound(c(-1), 4)
+    
+    
+  })
   
   
   output$SeleccionEdu <- renderUI({ 

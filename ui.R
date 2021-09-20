@@ -285,7 +285,8 @@ contenido <- dashboardBody(
                              status= "success",
                              title = "Gráfico",
                              uiOutput("SeleccionIng2"),
-                             plotlyOutput("ic_ing", height = 740)
+                             plotlyOutput("ic_ing", height = 740), 
+                             DTOutput("tabla_ic_ing")
                            )
                          )
                          
@@ -329,7 +330,8 @@ contenido <- dashboardBody(
                              status= "success",
                              title = "Gráfico",
                              uiOutput("SeleccionTec2"),
-                             plotlyOutput("ic_tec", height = 740)
+                             plotlyOutput("ic_tec", height = 740), 
+                             DTOutput("tabla_ic_tec")
                            )
                          )
                          
@@ -370,7 +372,8 @@ contenido <- dashboardBody(
                              status= "success",
                              title = "Gráfico",
                              uiOutput("SeleccionDemo2"),
-                             plotlyOutput("ic_demo", height = 740)
+                             plotlyOutput("ic_demo", height = 740), 
+                             DTOutput("tabla_ic_demo")
                            )
                          )
                          
@@ -416,7 +419,8 @@ contenido <- dashboardBody(
                              status= "success",
                              title = "Gráfico",
                              uiOutput("SeleccionHog2"),
-                             plotlyOutput("ic_hog", height = 740)
+                             plotlyOutput("ic_hog", height = 740), 
+                             DTOutput("tabla_ic_hog")
                            )
                          )
                          
