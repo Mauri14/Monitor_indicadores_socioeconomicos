@@ -2068,6 +2068,7 @@ server <- function(input, output){
     
     datatable(tabla2hog, 
               options = list(info = F,
+                             #autoWidth = T,
                              paging = F,
                              searching = T,
                              stripeClasses = F, 
