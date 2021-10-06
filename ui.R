@@ -132,20 +132,8 @@ contenido <- dashboardBody(
                          tabBox(
                            width = 12,
                            tabPanel(
-                             status= "primary",
-                             title = "Inferior",
-                             DTOutput("InfEdu"),
-                             p(class = 'text-center', downloadButton('dinf1', 'Descargar'))
-                           ),
-                           tabPanel(
                              status= "success",
-                             title = "Superior",
-                             DTOutput("SupEdu"),
-                             p(class = 'text-center', downloadButton('dsup1', 'Descargar'))
-                           ),
-                           tabPanel(
-                             status= "success",
-                             title = "Gráfico",
+                             title = "IC",
                              uiOutput("SeleccionEdu2"),
                              plotlyOutput("ic_edu", height = 740), 
                              DTOutput("tabla_ic_edu")
@@ -172,21 +160,8 @@ contenido <- dashboardBody(
                          tabBox(
                            width = 12,
                            tabPanel(
-                             status= "primary",
-                             title = "Inferior",
-                             DTOutput("InfSalud"),
-                             p(class = 'text-center', downloadButton('dinf2', 'Descargar'))
-                           ),
-                           tabPanel(
                              status= "success",
-                             title = "Superior",
-                             DTOutput("SupSalud"),
-                             p(class = 'text-center', downloadButton('dsup2', 'Descargar'))
-                             
-                           ),
-                           tabPanel(
-                             status= "success",
-                             title = "Gráfico",
+                             title = "IC",
                              uiOutput("SeleccionSalud2"),
                              plotlyOutput("ic_salud", height = 740), 
                              DTOutput("tabla_ic_salud")
@@ -223,21 +198,8 @@ contenido <- dashboardBody(
                          tabBox(
                            width = 12,
                            tabPanel(
-                             status= "primary",
-                             title = "Inferior",
-                             DTOutput("InfLab"),
-                             p(class = 'text-center', downloadButton('dinf3', 'Descargar'))
-                           ),
-                           tabPanel(
                              status= "success",
-                             title = "Superior",
-                             DTOutput("SupLab"),
-                             p(class = 'text-center', downloadButton('dsup3', 'Descargar'))
-                             
-                           ),
-                           tabPanel(
-                             status= "success",
-                             title = "Gráfico",
+                             title = "IC",
                              uiOutput("SeleccionLab2"),
                              plotlyOutput("ic_lab", height = 740), 
                              DTOutput("tabla_ic_lab")
@@ -269,21 +231,8 @@ contenido <- dashboardBody(
                          tabBox(
                            width = 12,
                            tabPanel(
-                             status= "primary",
-                             title = "Inferior",
-                             DTOutput("InfIng"),
-                             p(class = 'text-center', downloadButton('dinf4', 'Descargar'))
-                           ),
-                           tabPanel(
                              status= "success",
-                             title = "Superior",
-                             DTOutput("SupIng"),
-                             p(class = 'text-center', downloadButton('dsup4', 'Descargar'))
-                             
-                           ),
-                           tabPanel(
-                             status= "success",
-                             title = "Gráfico",
+                             title = "IC",
                              uiOutput("SeleccionIng2"),
                              plotlyOutput("ic_ing", height = 740), 
                              DTOutput("tabla_ic_ing")
@@ -314,21 +263,8 @@ contenido <- dashboardBody(
                          tabBox(
                            width = 12,
                            tabPanel(
-                             status= "primary",
-                             title = "Inferior",
-                             DTOutput("InfTec"),
-                             p(class = 'text-center', downloadButton('dinf5', 'Descargar'))
-                           ),
-                           tabPanel(
                              status= "success",
-                             title = "Superior",
-                             DTOutput("SupTec"),
-                             p(class = 'text-center', downloadButton('dsup5', 'Descargar'))
-                             
-                           ),
-                           tabPanel(
-                             status= "success",
-                             title = "Gráfico",
+                             title = "IC",
                              uiOutput("SeleccionTec2"),
                              plotlyOutput("ic_tec", height = 740), 
                              DTOutput("tabla_ic_tec")
@@ -356,21 +292,8 @@ contenido <- dashboardBody(
                          tabBox(
                            width = 12,
                            tabPanel(
-                             status= "primary",
-                             title = "Inferior",
-                             DTOutput("InfDemo"),
-                             p(class = 'text-center', downloadButton('dinf6', 'Descargar'))
-                           ),
-                           tabPanel(
                              status= "success",
-                             title = "Superior",
-                             DTOutput("SupDemo"),
-                             p(class = 'text-center', downloadButton('dsup6', 'Descargar'))
-                             
-                           ),
-                           tabPanel(
-                             status= "success",
-                             title = "Gráfico",
+                             title = "IC",
                              uiOutput("SeleccionDemo2"),
                              plotlyOutput("ic_demo", height = 740), 
                              DTOutput("tabla_ic_demo")
@@ -403,21 +326,8 @@ contenido <- dashboardBody(
                          tabBox(
                            width = 12,
                            tabPanel(
-                             status= "primary",
-                             title = "Inferior",
-                             DTOutput("InfHog"),
-                             p(class = 'text-center', downloadButton('dinf7', 'Descargar'))
-                           ),
-                           tabPanel(
                              status= "success",
-                             title = "Superior",
-                             DTOutput("SupHog"),
-                             p(class = 'text-center', downloadButton('dsup7', 'Descargar'))
-                             
-                           ),
-                           tabPanel(
-                             status= "success",
-                             title = "Gráfico",
+                             title = "IC",
                              uiOutput("SeleccionHog2"),
                              plotlyOutput("ic_hog", height = 740), 
                              DTOutput("tabla_ic_hog")
