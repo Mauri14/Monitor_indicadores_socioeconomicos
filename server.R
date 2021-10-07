@@ -1886,12 +1886,8 @@ server <- function(input, output){
   
   
   #GRAFICO DE BARRAS 
-  output$barras_edu <- renderPlotly({
-    
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
-    
+  
+  edu_bar <- eventReactive(input$go_edu, {
     p<- if (input$Nombre == "741" | input$Nombre == "751" | input$Nombre == "1807"| input$Nombre == "740"| input$Nombre == "748"| input$Nombre == "690"| input$Nombre == "756"| input$Nombre == "689"| input$Nombre == "732"| input$Nombre == "739")
       indicador_edu()%>%
       gather(key= Sexo, value= Valor, -dpto)%>% 
@@ -1948,15 +1944,19 @@ server <- function(input, output){
       theme(axis.text.y = element_text(face="bold"))+
       theme (axis.title = element_text(face="bold"))
     
-    ggplotly(p)
     
   })
-  output$barras_salud<- renderPlotly({
+  output$barras_edu <- renderPlotly({
     
     inFile <- input$datos
     if (is.null(inFile))
       return('No data')
     
+    ggplotly(edu_bar())
+    
+  })
+  
+  salud_bar<- eventReactive(input$go_salud, {
     p<- if (input$Nombre2 == "501")
       indicador_salud()%>%
       gather(key= Sexo, value= Valor, -dpto)%>% 
@@ -1992,15 +1992,19 @@ server <- function(input, output){
       theme(axis.text.y = element_text(face="bold"))+
       theme (axis.title = element_text(face="bold"))
     
-    ggplotly(p)
     
   })
-  output$barras_lab<- renderPlotly({
+  output$barras_salud<- renderPlotly({
     
     inFile <- input$datos
     if (is.null(inFile))
       return('No data')
     
+    ggplotly(salud_bar())
+    
+  })
+  
+  lab_bar<- eventReactive(input$go_lab, {
     p<-if (input$Nombre3 == "533" | input$Nombre3 == "521" | input$Nombre3 == "526"| input$Nombre3 == "618"| input$Nombre3 == "608"| input$Nombre3 == "690"| input$Nombre3 == "502")
       indicador_lab()%>%
       gather(key= Sexo, value= Valor, -dpto)%>% 
@@ -2051,15 +2055,19 @@ server <- function(input, output){
       theme(axis.text.y = element_text(face="bold"))+
       theme (axis.title = element_text(face="bold"))
     
-    ggplotly(p)
     
   })
-  output$barras_ing <- renderPlotly({
+  output$barras_lab<- renderPlotly({
     
     inFile <- input$datos
     if (is.null(inFile))
       return('No data')
     
+    ggplotly(lab_bar())
+    
+  })
+  
+  ing_bar<- eventReactive(input$go_ing, {
     p<-if (input$Nombre4 == "526" | input$Nombre4 == "568" | input$Nombre4 == "1636")
       indicador_ing()%>%
       gather(key= Sexo, value= Valor, -dpto)%>% 
@@ -2092,14 +2100,18 @@ server <- function(input, output){
       theme(axis.text.y = element_text(face="bold"))+
       theme (axis.title = element_text(face="bold"))
     
-    ggplotly(p)
-    
   })
-  output$barras_tec <- renderPlotly({
+  output$barras_ing <- renderPlotly({
     
     inFile <- input$datos
     if (is.null(inFile))
       return('No data')
+    
+    ggplotly(ing_bar())
+    
+  })
+  
+  tec_bar<- eventReactive(input$go_tec, {
     
     p<-if (input$Nombre5 == "605" | input$Nombre5 == "581" | input$Nombre5 == "603")
       indicador_tec()%>%
@@ -2137,15 +2149,19 @@ server <- function(input, output){
       theme(axis.text.y = element_text(face="bold"))+
       theme (axis.title = element_text(face="bold"))
     
-    ggplotly(p)
-    
   })
-  output$barras_demo <- renderPlotly({
+  output$barras_tec <- renderPlotly({
     
     inFile <- input$datos
     if (is.null(inFile))
       return('No data')
     
+    
+    ggplotly(tec_bar())
+    
+  })
+  
+  demo_bar <- eventReactive(input$go_demo, {
     p<-indicador_demo()%>%
       gather(key= Categoría, value= Valor, -`00_dpto`)%>%
       separate(Categoría, c("Sexo", "Categoría"), "_0")%>%
@@ -2161,16 +2177,20 @@ server <- function(input, output){
       theme(axis.text.y = element_text(face="bold"))+
       theme (axis.title.y = element_text(face="bold", vjust = -5))+
       theme (axis.title.x = element_text(face="bold"))
-    ggplotly(p)
-    #ggplotly(p)
     
   })
-  output$barras_hog <- renderPlotly({
+  output$barras_demo <- renderPlotly({
     
     inFile <- input$datos
     if (is.null(inFile))
       return('No data')
     
+    
+    ggplotly(demo_bar())
+    
+  })
+  
+  hog_bar <- eventReactive(input$go_hog, {
     p<-if (input$Nombre7 == "577" | input$Nombre7 == "553")
       indicador_hog()%>%
       ggplot(aes(x=reorder(dpto,Total), y= Total))+
@@ -2194,17 +2214,21 @@ server <- function(input, output){
       theme(axis.text.y = element_text(face="bold"))+
       theme (axis.title = element_text(face="bold"))
     
-    ggplotly(p)
-    
   })
-  
-  
-  output$map_edu <- renderPlotly({
+  output$barras_hog <- renderPlotly({
     
     inFile <- input$datos
     if (is.null(inFile))
       return('No data')
     
+    
+    ggplotly(hog_bar())
+    
+  })
+  
+  
+  
+  edu_map <- eventReactive(input$go_edu, {
     m<-if (input$Nombre == "741" | input$Nombre == "751" | input$Nombre == "1807"| input$Nombre == "740"| input$Nombre == "748"| input$Nombre == "690"| input$Nombre == "756"| input$Nombre == "689"| input$Nombre == "732"| input$Nombre == "739" | input$Nombre == "1020" | input$Nombre == "1380")
       left_join(mapa_uru, indicador_edu(), by = c("popup" = "dpto"))%>%
       ggplot(aes(x=long, y=lat, group = group,
@@ -2235,15 +2259,19 @@ server <- function(input, output){
       coord_equal() +
       theme(title = element_blank(),
             axis.text = element_blank())
-    ggplotly(m)
     
   })
-  output$map_salud <- renderPlotly({
+  output$map_edu <- renderPlotly({
     
     inFile <- input$datos
     if (is.null(inFile))
       return('No data')
     
+    ggplotly(edu_map())
+    
+  })
+  
+  salud_map<- eventReactive(input$go_salud, {
     m<-if (input$Nombre2 == "501" | input$Nombre2 == "529")
       left_join(mapa_uru, indicador_salud(), by = c("popup" = "dpto"))%>%
       ggplot(aes(x=long, y=lat, group = group,
@@ -2265,15 +2293,19 @@ server <- function(input, output){
       theme(title = element_blank(),
             axis.text = element_blank())
     
-    ggplotly(m)
     
   })
-  output$map_lab <- renderPlotly({
+  output$map_salud <- renderPlotly({
     
     inFile <- input$datos
     if (is.null(inFile))
       return('No data')
     
+    ggplotly(salud_map())
+    
+  })
+  
+  lab_map<- eventReactive(input$go_lab, {
     m<-if (input$Nombre3 == "533" | input$Nombre3 == "521"| input$Nombre3 == "526"| input$Nombre3 == "618"| input$Nombre3 == "608"| input$Nombre3 == "690"| input$Nombre3 == "502"| input$Nombre3 == "531" | input$Nombre3 == "607"| input$Nombre3 == "534")
       left_join(mapa_uru, indicador_lab(), by = c("popup" = "dpto"))%>%
       ggplot(aes(x=long, y=lat, group = group,
@@ -2305,15 +2337,18 @@ server <- function(input, output){
       theme(title = element_blank(),
             axis.text = element_blank())
     
-    ggplotly(m)
-    
   })
-  output$map_ing <- renderPlotly({
+  output$map_lab <- renderPlotly({
     
     inFile <- input$datos
     if (is.null(inFile))
       return('No data')
     
+    ggplotly(lab_map())
+    
+  })
+  
+  ing_map <- eventReactive(input$go_ing, {
     m<-if (input$Nombre4 == "526" | input$Nombre4 == "568"| input$Nombre4 == "1636"| input$Nombre4 == "531"| input$Nombre4 == "534")
       left_join(mapa_uru, indicador_ing(), by = c("popup" = "dpto"))%>%
       ggplot(aes(x=long, y=lat, group = group,
@@ -2334,16 +2369,18 @@ server <- function(input, output){
       coord_equal() +
       theme(title = element_blank(),
             axis.text = element_blank())
-    
-    ggplotly(m)
-    
   })
-  output$map_tec <- renderPlotly({
+  output$map_ing <- renderPlotly({
     
     inFile <- input$datos
     if (is.null(inFile))
       return('No data')
     
+    ggplotly(ing_map())
+    
+  })
+  
+  tec_map <-eventReactive(input$go_tec, {
     m<-if (input$Nombre5 == "605" | input$Nombre5 == "581"| input$Nombre5 == "603")
       left_join(mapa_uru, indicador_tec(), by = c("popup" = "dpto"))%>%
       ggplot(aes(x=long, y=lat, group = group,
@@ -2375,13 +2412,17 @@ server <- function(input, output){
       theme(title = element_blank(),
             axis.text = element_blank())
     
-    ggplotly(m)
   })
-  output$map_demo <- renderPlotly({
+  output$map_tec <- renderPlotly({
     
     inFile <- input$datos
     if (is.null(inFile))
       return('No data')
+    
+    ggplotly(tec_map())
+  })
+  
+  demo_map <- eventReactive(input$go_demo, {
     
     m<-left_join(mapa_uru, indicador_demo(), by = c("popup" = "00_dpto"))%>%
       ggplot(aes(x=long, y=lat, group = group,
@@ -2393,15 +2434,17 @@ server <- function(input, output){
       theme(title = element_blank(),
             axis.text = element_blank())
     
-    
-    ggplotly(m)
   })
-  output$map_hog <- renderPlotly({
+  output$map_demo <- renderPlotly({
     
     inFile <- input$datos
     if (is.null(inFile))
       return('No data')
     
+    ggplotly(demo_map())
+  })
+  
+  hog_map <- eventReactive(input$go_hog, {
     m<-if (input$Nombre7 == "577"| input$Nombre7 == "553")
       left_join(mapa_uru, indicador_hog(), by = c("popup" = "dpto"))%>%
       ggplot(aes(x=long, y=lat, group = group,
@@ -2422,7 +2465,16 @@ server <- function(input, output){
       coord_equal() +
       theme(title = element_blank(),
             axis.text = element_blank())
-    ggplotly(m)
+    
+  })
+  output$map_hog <- renderPlotly({
+    
+    inFile <- input$datos
+    if (is.null(inFile))
+      return('No data')
+    
+    
+    ggplotly(hog_map())
   })
   
   

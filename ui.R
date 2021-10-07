@@ -47,6 +47,7 @@ barra_lateral <- dashboardSidebar(
              menuSubItem("Viviendas y hogares", tabName = "hogares", icon = icon("home"))
              
     )
+   
     
   )
 )
@@ -121,7 +122,7 @@ contenido <- dashboardBody(
                                                                                                                                                  "Promedio de años de educación de las personas de 25 años o más por sexo"="1380",
                                                                                                                                                  "Tasa bruta de asistencia de 6 a 11 años a educación primaria"="747",
                                                                                                                                                  "Tasa bruta de asistencia de 3 a 5 años a educación preescolar"="746",
-                                                                                                                                                 "Tasa bruta de asistencia de 12 a 17 años a educación media"="1808"))),
+                                                                                                                                                 "Tasa bruta de asistencia de 12 a 17 años a educación media"="1808")),actionButton("go_edu", "Go")),
                          box(title = "Seleccionar categoría para el mapa", width = 5, solidHeader = TRUE , status = "primary",uiOutput("SeleccionEdu")),
                          box(title = "Mapa de Uruguay", status = "primary", solidHeader = TRUE, 
                              plotlyOutput("map_edu",height = 740), height = 800, width = 6), 
@@ -149,7 +150,7 @@ contenido <- dashboardBody(
                        fluidRow(   
                          box(title= "Indicador", width = 7, solidHeader = TRUE, status = "primary",selectInput("Nombre2", "Indicador", choices= c("Personas afiliadas a emergencias móviles por sexo"="501",
                                                                                                                                                   "Personas afiliadas a emergencias móviles por tramos de edad"="529",
-                                                                                                                                                  "Personas por tipo de atención en salud"="517"))),
+                                                                                                                                                  "Personas por tipo de atención en salud"="517")),actionButton("go_salud", "Go")),
                          box(title = "Seleccionar categoría para el mapa", width = 5, solidHeader = TRUE , status = "primary",uiOutput("SeleccionSalud")),
                          box(title = "Mapa de Uruguay", status = "primary", solidHeader = TRUE, 
                              plotlyOutput("map_salud",height = 740), height = 800, width = 6), 
@@ -187,7 +188,7 @@ contenido <- dashboardBody(
                                                                                                                                                   "Tasa de desempleo por tramos de edad"="531",
                                                                                                                                                   "Tasa de empleo por tramos de edad"="534",
                                                                                                                                                   "Tasa de actividad por tramos de edad"="607",
-                                                                                                                                                  "Población por condición de actividad por sexo"="610"))),
+                                                                                                                                                  "Población por condición de actividad por sexo"="610")),actionButton("go_lab", "Go")),
                          box(title = "Seleccionar categoría para el mapa", width = 5, solidHeader = TRUE , status = "primary",uiOutput("SeleccionLab")),
                          box(title = "Mapa de Uruguay", status = "primary", solidHeader = TRUE, 
                              plotlyOutput("map_lab",height = 740), height = 800, width = 6), 
@@ -220,7 +221,7 @@ contenido <- dashboardBody(
                                                                                                                                                   "Tasa de empleo por tramos de edad"="534",
                                                                                                                                                   "Hogares con hacinamiento"="577",
                                                                                                                                                   "Hogares con al menos un auto o camioneta"="1929",
-                                                                                                                                                  "Hogares en situación de pobreza"="553"))),
+                                                                                                                                                  "Hogares en situación de pobreza"="553")),actionButton("go_ing", "Go")),
                          box(title = "Seleccionar categoría para el mapa", width = 5, solidHeader = TRUE , status = "primary",uiOutput("SeleccionIng")),
                          box(title = "Mapa de Uruguay", status = "primary", solidHeader = TRUE, 
                              plotlyOutput("map_ing",height = 740), height = 800, width = 6), 
@@ -252,7 +253,7 @@ contenido <- dashboardBody(
                                                                                                                                                   "Frecuencia de utilización de internet por sexo"="582",
                                                                                                                                                   "Hogares con conexión a internet"="591",
                                                                                                                                                   "Hogares con computadora o laptop"="594",
-                                                                                                                                                  "Hogares con al menos una computadora del Plan Ceibal"="584"))),
+                                                                                                                                                  "Hogares con al menos una computadora del Plan Ceibal"="584")),actionButton("go_tec", "Go")),
                          box(title = "Seleccionar categoría para el mapa", width = 5, solidHeader = TRUE , status = "primary",uiOutput("SeleccionTec")),
                          box(title = "Mapa de Uruguay", status = "primary", solidHeader = TRUE, 
                              plotlyOutput("map_tec",height = 740), height = 800, width = 6), 
@@ -280,7 +281,7 @@ contenido <- dashboardBody(
                        fluidRow(    
                          box(title= "Indicador", width = 7, solidHeader = TRUE, status = "primary",selectInput("Nombre6", "Indicador", choices= c("Población por lugar de residencia hace 5 años"="678",
                                                                                                                                                   "Población por lugar de nacimiento"="654",
-                                                                                                                                                  "Población por lugar de residencia anterior"="655"))),
+                                                                                                                                                  "Población por lugar de residencia anterior"="655")),actionButton("go_demo", "Go")),
                          box(title = "Seleccionar categoría para el mapa", width = 5, solidHeader = TRUE ,status = "primary", uiOutput("SeleccionDemo")),
                          box(title = "Mapa de Uruguay", status = "primary", solidHeader = TRUE, 
                              plotlyOutput("map_demo",height = 740), height = 800, width = 6), 
@@ -314,9 +315,9 @@ contenido <- dashboardBody(
                                                                                                                                                   "Hogares por origen del agua para beber y cocinar"="783",
                                                                                                                                                   "Hogares por presencia de lugar para cocinar"="765",
                                                                                                                                                   "Hogares por presencia y uso de baño"="766",
-                                                                                                                                                  "Hogares por tipo de relación con la vivienda"="774"))),
+                                                                                                                                                  "Hogares por tipo de relación con la vivienda"="774")),actionButton("go_hog", "Go")),
                          box(title = "Seleccionar categoría para el mapa", width = 5, solidHeader = TRUE ,status = "primary",uiOutput("SeleccionHog")),
-                         box(title = "Mapa de Uruguay", status = "primary", solidHeader = TRUE, 
+                         box(title = "Mapa de Uruguay", status = "primary", solidHeader = TRUE,  
                              plotlyOutput("map_hog",height = 740), height = 800, width = 6), 
                          box(title= "Gráfico de barras", plotlyOutput("barras_hog",height = 740), status = "primary", solidHeader = TRUE,width = 6, height = 800)
                        )),
