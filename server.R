@@ -1409,9 +1409,13 @@ server <- function(input, output){
   
   output$datos1 <- renderDT({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+  #  inFile <- input$Nombre3
+   # if (is.null(inFile))
+    #  return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     datatable(indicador_edu(), 
               options = list(info = F,
@@ -1427,9 +1431,13 @@ server <- function(input, output){
   }) 
   
   output$datos2 <- renderDT({
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+   # inFile <- input$datos
+    #if (is.null(inFile))
+     # return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     datatable(indicador_salud(), 
               options = list(info = F,
@@ -1444,9 +1452,10 @@ server <- function(input, output){
   
   output$datos3 <- renderDT({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     datatable(indicador_lab(), 
               options = list(info = F,
@@ -1461,9 +1470,10 @@ server <- function(input, output){
   
   output$datos4 <- renderDT({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     datatable(indicador_ing(), 
               options = list(info = F,
@@ -1479,9 +1489,10 @@ server <- function(input, output){
   
   output$datos5 <- renderDT({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     datatable(indicador_tec(), 
               options = list(info = F,
@@ -1497,9 +1508,10 @@ server <- function(input, output){
   
   output$datos6 <- renderDT({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     datatable(indicador_demo(), 
               options = list(info = F,
@@ -1515,9 +1527,10 @@ server <- function(input, output){
   
   output$datos7 <- renderDT({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     datatable(indicador_hog(), 
               options = list(info = F,
@@ -1534,9 +1547,10 @@ server <- function(input, output){
   
   output$tabla_ic_edu <- renderDT({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre == "741" | input$Nombre == "751" | input$Nombre == "1807"| input$Nombre == "740"| input$Nombre == "748"| input$Nombre == "690"| input$Nombre == "756"| input$Nombre == "689"| input$Nombre == "732"| input$Nombre == "739" | input$Nombre == "1020" | input$Nombre == "1380"){
       tabla<-indicador_edu()%>%
@@ -1587,12 +1601,12 @@ server <- function(input, output){
     
   })
   
-  
   output$tabla_ic_salud <- renderDT({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre2 == "501"| input$Nombre2 == "529" | input$Nombre2== "517"){
       tabla<-indicador_salud()%>%
@@ -1620,9 +1634,10 @@ server <- function(input, output){
   
   output$tabla_ic_lab <- renderDT({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre3 == "533" | input$Nombre3 == "521"| input$Nombre3 == "526"| input$Nombre3 == "618"| input$Nombre3 == "608"| input$Nombre3 == "690"| input$Nombre3 == "502"| input$Nombre3 == "531" | input$Nombre3 == "607"| input$Nombre3 == "534"| input$Nombre3== "610"){
       tabla<-indicador_lab()%>%
@@ -1660,12 +1675,12 @@ server <- function(input, output){
     
   })
   
-  
   output$tabla_ic_ing <- renderDT({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre4 == "526" | input$Nombre4 == "568"| input$Nombre4 == "1636"| input$Nombre4 == "531"| input$Nombre4 == "534"){
       tabla<-indicador_ing()%>%
@@ -1703,9 +1718,10 @@ server <- function(input, output){
   
   output$tabla_ic_tec <- renderDT({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre5 == "605" | input$Nombre5 == "581"| input$Nombre5 == "603"){
       tabla<-indicador_tec()%>%
@@ -1756,9 +1772,10 @@ server <- function(input, output){
   
   output$tabla_ic_demo <- renderDT({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre6 == "678"|input$Nombre6 == "654"|input$Nombre6 == "655"){
       tabla<-indicador_demo()%>%
@@ -1787,9 +1804,10 @@ server <- function(input, output){
   
   output$tabla_ic_hog <- renderDT({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre7 == "577"| input$Nombre7 == "553"){
       inf<- indicador_hogInf()
@@ -1828,59 +1846,115 @@ server <- function(input, output){
   
   
   output$SeleccionEdu <- renderUI({ 
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatEdu", "Categoría:", choices = unique(colnames(indicador_edu())[-1])) 
   })
   
   output$SeleccionSalud <- renderUI({ 
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatSalud", "Categoría:", choices = unique(colnames(indicador_salud())[-1])) 
   })
   
   output$SeleccionLab <- renderUI({ 
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatLab", "Categoría:", choices = unique(colnames(indicador_lab())[-1])) 
   })
   
   output$SeleccionIng <- renderUI({ 
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatIng", "Categoría:", choices = unique(colnames(indicador_ing())[-1])) 
   })
   
-  output$SeleccionTec <- renderUI({ 
+  output$SeleccionTec <- renderUI({
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatTec", "Categoría:", choices = unique(colnames(indicador_tec())[-1])) 
   })
   
   output$SeleccionDemo <- renderUI({ 
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatDemo", "Categoría:", choices = unique(colnames(indicador_demo())[-1])) 
   }) 
   
-  output$SeleccionHog <- renderUI({ 
+  output$SeleccionHog <- renderUI({
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatHog", "Categoría:", choices = unique(colnames(indicador_hog())[-1])) 
   })
   
   
   output$SeleccionEdu2 <- renderUI({ 
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatEdu2", "Categoría:", choices = unique(colnames(indicador_edu())[-1])) 
   })
   
   output$SeleccionSalud2 <- renderUI({ 
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatSalud2", "Categoría:", choices = unique(colnames(indicador_salud())[-1])) 
   })
   
   output$SeleccionLab2 <- renderUI({ 
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatLab2", "Categoría:", choices = unique(colnames(indicador_lab())[-1])) 
   })
   
   output$SeleccionIng2 <- renderUI({ 
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatIng2", "Categoría:", choices = unique(colnames(indicador_ing())[-1])) 
   })
   
   output$SeleccionTec2 <- renderUI({ 
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatTec2", "Categoría:", choices = unique(colnames(indicador_tec())[-1])) 
   })
   
   output$SeleccionDemo2 <- renderUI({ 
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatDemo2", "Categoría:", choices = unique(colnames(indicador_demo())[-1])) 
   }) 
   
   output$SeleccionHog2 <- renderUI({ 
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     selectInput("CatHog2", "Categoría:", choices = unique(colnames(indicador_hog())[-1])) 
   })
   
@@ -1948,9 +2022,10 @@ server <- function(input, output){
   })
   output$barras_edu <- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     ggplotly(edu_bar())
     
@@ -1996,9 +2071,10 @@ server <- function(input, output){
   })
   output$barras_salud<- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     ggplotly(salud_bar())
     
@@ -2059,9 +2135,10 @@ server <- function(input, output){
   })
   output$barras_lab<- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     ggplotly(lab_bar())
     
@@ -2103,9 +2180,10 @@ server <- function(input, output){
   })
   output$barras_ing <- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     ggplotly(ing_bar())
     
@@ -2152,9 +2230,10 @@ server <- function(input, output){
   })
   output$barras_tec <- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     
     ggplotly(tec_bar())
@@ -2181,9 +2260,10 @@ server <- function(input, output){
   })
   output$barras_demo <- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     
     ggplotly(demo_bar())
@@ -2217,9 +2297,10 @@ server <- function(input, output){
   })
   output$barras_hog <- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     
     ggplotly(hog_bar())
@@ -2263,9 +2344,10 @@ server <- function(input, output){
   })
   output$map_edu <- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     ggplotly(edu_map())
     
@@ -2297,9 +2379,10 @@ server <- function(input, output){
   })
   output$map_salud <- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     ggplotly(salud_map())
     
@@ -2340,9 +2423,10 @@ server <- function(input, output){
   })
   output$map_lab <- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     ggplotly(lab_map())
     
@@ -2372,9 +2456,10 @@ server <- function(input, output){
   })
   output$map_ing <- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     ggplotly(ing_map())
     
@@ -2415,9 +2500,10 @@ server <- function(input, output){
   })
   output$map_tec <- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     ggplotly(tec_map())
   })
@@ -2437,9 +2523,10 @@ server <- function(input, output){
   })
   output$map_demo <- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     ggplotly(demo_map())
   })
@@ -2469,9 +2556,10 @@ server <- function(input, output){
   })
   output$map_hog <- renderPlotly({
     
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     
     ggplotly(hog_map())
@@ -2479,9 +2567,10 @@ server <- function(input, output){
   
   
   output$ic_edu<- renderPlotly({
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre == "741" | input$Nombre == "751" | input$Nombre == "1807"| input$Nombre == "740"| input$Nombre == "748"| input$Nombre == "690"| input$Nombre == "756"| input$Nombre == "689"| input$Nombre == "732"| input$Nombre == "739" | input$Nombre == "1020" | input$Nombre == "1380"){
       tabla<-indicador_edu()%>%
@@ -2538,9 +2627,10 @@ server <- function(input, output){
   })
   
   output$ic_salud<- renderPlotly({
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre2 == "501"| input$Nombre2 == "529" | input$Nombre2== "517"){
       tabla<-indicador_salud()%>%
@@ -2564,9 +2654,10 @@ server <- function(input, output){
   })
   
   output$ic_lab<- renderPlotly({
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre3 == "533" | input$Nombre3 == "521"| input$Nombre3 == "526"| input$Nombre3 == "618"| input$Nombre3 == "608"| input$Nombre3 == "690"| input$Nombre3 == "502"| input$Nombre3 == "531" | input$Nombre3 == "607"| input$Nombre3 == "534"| input$Nombre3== "610"){
       tabla<-indicador_lab()%>%
@@ -2607,9 +2698,10 @@ server <- function(input, output){
   })
   
   output$ic_ing<- renderPlotly({
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre4 == "526" | input$Nombre4 == "568"| input$Nombre4 == "1636"| input$Nombre4 == "531"| input$Nombre4 == "534"){
           tabla<-indicador_ing()%>%
@@ -2647,9 +2739,10 @@ server <- function(input, output){
   })
   
   output$ic_tec<- renderPlotly({
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre5 == "605" | input$Nombre5 == "581"| input$Nombre5 == "603"){
       tabla<-indicador_tec()%>%
@@ -2704,9 +2797,10 @@ server <- function(input, output){
   })
   
   output$ic_demo<- renderPlotly({
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre6 == "678"|input$Nombre6 == "654"|input$Nombre6 == "655"){
       tabla<-indicador_demo()%>%
@@ -2731,9 +2825,10 @@ server <- function(input, output){
   })
   
   output$ic_hog<- renderPlotly({
-    inFile <- input$datos
-    if (is.null(inFile))
-      return('No data')
+    file <- input$datos
+    ext <- tools::file_ext(file$datapath)
+    req(file)
+    validate(need(ext == "sav", "Please upload a sav file"))
     
     if (input$Nombre7 == "577"| input$Nombre7 == "553"){
       inf<- indicador_hogInf()
@@ -2792,49 +2887,6 @@ server <- function(input, output){
     write.table(indicador_hog(), file  ,sep=";",row.names = F)
   })
   
- # output$dinf1 = downloadHandler('inferior.csv', content = function(file) {
-  #  write.table(indicador_eduInf(), file  ,sep=";",row.names = F)
-  #})
-  output$dinf2 = downloadHandler('inferior.csv', content = function(file) {
-    write.table(indicador_saludInf(), file  ,sep=";",row.names = F)
-  })
-  output$dinf3 = downloadHandler('inferior.csv', content = function(file) {
-    write.table(indicador_labInf(), file  ,sep=";",row.names = F)
-  })
-  output$dinf4 = downloadHandler('inferior.csv', content = function(file) {
-    write.table(indicador_ingInf(), file  ,sep=";",row.names = F)
-  })
-  output$dinf5 = downloadHandler('inferior.csv', content = function(file) {
-    write.table(indicador_tecInf(), file  ,sep=";",row.names = F)
-  })
-  output$dinf6 = downloadHandler('inferior.csv', content = function(file) {
-    write.table(indicador_demoInf(), file  ,sep=";",row.names = F)
-  })
-  output$dinf7 = downloadHandler('inferior.csv', content = function(file) {
-    write.table(indicador_hogInf(), file  ,sep=";",row.names = F)
-  })
-  
- # output$dsup1 = downloadHandler('superior.csv', content = function(file) {
-  #  write.table(indicador_eduSup(), file  ,sep=";",row.names = F)
-  #})
-  output$dsup2 = downloadHandler('superior.csv', content = function(file) {
-    write.table(indicador_saludSup(), file  ,sep=";",row.names = F)
-  })
-  output$dsup3 = downloadHandler('superior.csv', content = function(file) {
-    write.table(indicador_labSup(), file  ,sep=";",row.names = F)
-  })
-  output$dsup4 = downloadHandler('superior.csv', content = function(file) {
-    write.table(indicador_ingSup(), file  ,sep=";",row.names = F)
-  })
-  output$dsup5 = downloadHandler('superior.csv', content = function(file) {
-    write.table(indicador_tecSup(), file  ,sep=";",row.names = F)
-  })
-  output$dsup6 = downloadHandler('superior.csv', content = function(file) {
-    write.table(indicador_demoSup(), file  ,sep=";",row.names = F)
-  })
-  output$dsup7 = downloadHandler('superior.csv', content = function(file) {
-    write.table(indicador_hogSup(), file  ,sep=";",row.names = F)
-  })
   
   
 }
