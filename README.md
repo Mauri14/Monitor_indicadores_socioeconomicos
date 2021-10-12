@@ -10,7 +10,7 @@ Tutores:
  - Ignacio Álvarez-Castro
  - Juan José Goyeneche
 
-###Resumen:
+### Resumen:
 
 Las encuestas por muestreo son utilizadas no solo para obtener estimaciones a nivel de toda la población, sino que también pueden ser eficaces para realizar estimaciones en subconjuntos de la población.
 Estos subconjuntos son denominados dominios, y pueden estar definidos por áreas geográficas, grupos demográficos u otro tipo de subpoblaciones. En Uruguay, la principal fuente de información para construir
