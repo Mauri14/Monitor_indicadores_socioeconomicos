@@ -5,6 +5,7 @@ En este repositorio se presentan los principales resultados del trabajo: Monitor
 Este trabajo fue realizado en el marco del Trabajo Final de Grado de la Licenciatura en Estadística - FCEA - UDELAR. 
 
 Estudiante responsable del trabajo: Mauricio Pittamiglio
+
 Tutores: 
  - Ignacio Álvarez-Castro
  - Juan José Goyeneche
