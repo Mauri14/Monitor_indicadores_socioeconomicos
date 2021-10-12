@@ -15,7 +15,7 @@ El repositorio se estructura de la siguiente manera:
 
 ## App
 
-En esta carpeta se encuentra el código de la Shiny App y los archivos necesarios para el correcto funcionamiento de la misma.
+En esta carpeta se encuentra el código de la Shiny App y los archivos necesarios para el correcto funcionamiento del monitor.
 
 ## Documentos
 
