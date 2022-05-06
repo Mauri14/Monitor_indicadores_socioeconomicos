@@ -23,6 +23,7 @@ El objetivo de este trabajo es generar un Monitor de indicadores socioeconómico
 y sus respectivos intervalos de confianza, aportando además una visualización interactiva de los resultados. Se trabaja con distintos indicadores socioeconómicos del Observatorio Territorio Uruguay
 (https://otu.opp.gub.uy/), que se obtienen a partir de estimaciones provenientes de la Encuesta Continua de Hogares.
 
+Una versión reducida del monitor se encuentra disponible para su uso en el siguiente link (http://164.73.240.157:3838/ShinyMauricio/Mini_app/).
 
 El repositorio se estructura de la siguiente manera:
 
